@@ -8,6 +8,6 @@ namespace BeautyStore.Classes
 {
     class ApplicationConfig
     {
-        public static bool IsDev { get => true; }
+        public static bool IsDev { get => false; }
     }
 }

@@ -64,5 +64,10 @@ namespace BeautyStore.Pages
         {
             AccountFrame.Navigate(new PageCategories());
         }
+
+        private void BtnBack_Click(object sender, RoutedEventArgs e)
+        {
+            NavManager.MainFrame.Navigate(new SignIn());
+        }
     }
 }

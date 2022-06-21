@@ -87,6 +87,15 @@
                         Name="BtnReports"
                         Click="BtnReports_Click"
                         Content="Отчеты" />
+                    <Button
+                        Command="{x:Static materialDesign:DrawerHost.CloseDrawerCommand}"
+                        CommandParameter="{x:Static Dock.Left}"
+                        Margin="4"
+                        HorizontalAlignment="Center"
+                        Style="{DynamicResource MaterialDesignFlatButton}"
+                        Name="BtnBack"
+                        Click="BtnBack_Click"
+                        Content="Выход" />
                 </StackPanel>
             </materialDesign:DrawerHost.LeftDrawerContent>
 
