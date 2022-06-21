@@ -1,0 +1,172 @@
+﻿@model IEnumerable<Molotok34.Models.Services>
+@using Molotok34.Models
+@{
+    var Services = BeautyStoreEntities.GetContext().Services.ToList();
+    var Categoris = BeautyStoreEntities.GetContext().Categoris.ToList();
+
+}
+
+
+<section class="product-section clearfix">
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-lg-7 col-md-8 ml-auto mr-auto">
+                <!-- section title -->
+                <div class="section-title title-style-center_text style2">
+                    <div class="title-header">
+                        <h2 class="title mt-4">Каталог товаров</h2>
+
+
+                        <input class="mt-4" type="text" id="searchProduct" onkeyup="searchFunction()" placeholder="Поиск.." title="Поиск...">
+
+                    </div>
+                </div><!-- section title end -->
+            </div>
+        </div><!-- row end -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ttm-tabs tabs-for-Services" data-effect="fadeIn">
+                    <ul class="tabs clearfix">
+                        @foreach (var item in Categoris)
+                        {
+                            <li class="tab"><a href="#"> @Html.DisplayFor(modelItem => item.Name)</a></li>
+                        }
+                    </ul>
+                    <div class="content-tab">
+                        <!-- content-inner -->
+
+                        @{
+                            var countProducts = 0;
+                        }
+
+
+                        @foreach (var category in Categoris)
+                        {
+
+                            var currentProducts = Services.Where(p => p.IdCategory == category.Id).ToList();
+
+
+                            <div class="content-inner">
+                                <div class="Services row">
+                                    <!-- product -->
+
+                                    @foreach (var product in currentProducts)
+                                    {
+                                        <div id="@("product" + countProducts)" class="product col-md-3 col-sm-6 col-xs-12">
+                                            <div class="product-box">
+                                                <!-- product-box-inner -->
+                                                <div class="product-box-inner">
+                                                    <div class="product-image-box">
+                                                        <img class="img-fluid pro-image-front" src="/img/product/@Html.DisplayFor(modelItem => product.Img)" alt="" style="height: 300px">
+                                                        <img class="img-fluid pro-image-back" src="/img/product/@Html.DisplayFor(modelItem => product.Img)" alt="" style="height: 300px">
+                                                    </div>
+                                                </div><!-- product-box-inner end -->
+                                                <div class="product-content-box">
+                                                    <a class="product-title" href="/Catalog/Product/@Html.DisplayFor(modelItem => product.Id)">
+                                                        <h2 class="@("productName" + countProducts)">@Html.DisplayFor(modelItem => product.Name)</h2>
+                                                    </a>
+
+                                                    <span class="price">
+                                                        <span class="product-Price-amount">
+                                                            <span class="product-Price-currencySymbo" style="color:black">@Html.DisplayFor(modelItem => product.Cost)руб.</span>
+                                                        </span>
+                                                    </span>
+                                                    <a class="btn btn-primary mt-2" href="/Catalog/Product/@Html.DisplayFor(modelItem => product.Id)">купить</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {
+                                            countProducts++;
+                                        }
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+<section>
+    <div class="container">
+
+        <div class="company_bottom_block">
+            <div class="row wrap_md">
+                <div class="col-md-3 col-lg-3 col-sm-3 hidden-xs img">
+                    <a href="/info/"><img width="220" class="agll agll_inited agll_loaded" src="/img/shopping_girl_blue.png" height="272" alt="ВОЛГТЕК" title="ВОЛГТЕК" style="display: inline-block;"></a>
+                </div>
+                <div class="col-md-9 col-lg-9 col-sm-9 big">
+                    <h1 class="title_block lg">BeautyStore интернет-магазин товаров для красоты&nbsp;</h1>
+                    <p>
+                        BeautyStore - один из лидеров оптово-розничной продажи парикмахерских инструментов, профессиональной косметики, расходных материалов, и оборудования для салонов красоты.&nbsp;
+                    </p>
+                    <p>
+                        Мы работаем с 1999 года и на сегодняшний день являемся экспертом в сфере красивого бизнеса. За более, чем 20 лет работы, ВОЛГТЕК стал ключевым звеном beauty-индустрии юга России.
+                    </p>
+                    <p>
+                        Если Вы мастер маникюра-педикюра, специалист по наращиванию ресниц и моделированию бровей, парикмахер, стилист, косметолог, занимаетесь депиляцией или шугарингом или&nbsp;собственник салона красоты, то в нашем разнообразии профессиональных товаров, Вы всегда найдете всё необходимое, для успешного ведения бизнеса.
+                    </p>
+                    <p>
+                        Даже если Вы не относитесь к сотрудникам бьюти-бизнеса, но цените&nbsp;качественные&nbsp;товары&nbsp;и профессиональную&nbsp;косметику, то и для Вас есть много всего интересного.
+                    </p>
+                    <p>
+                        Мы следим за новинками и постоянно обновляем ассортимент, поэтому уверены, что готовы предложить клиентам все необходимое для успешной работы по лучшим ценам.
+                    </p>
+                    <p>
+                        <b>И помните:&nbsp;Профессиональное - доступно каждому!</b>
+                    </p>
+                    <p>
+                        <br>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="single-product-section layout-1 clearfix">
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Вы можете связаться с нами по контактым данным</h3>
+                <p>Поста: BeautyStore@mail.com</p>
+                <p>Телефон: +79053300881</p>
+                <h3>
+                    БЕСПЛАТНАЯ доставка
+                </h3>
+                <p>
+                    При заказе от 300 руб. доставка товаров на дом и в офис по г. Волгограду осуществляется БЕСПЛАТНО. Стоимость доставки на меньшую сумму уточняйте у оператора.
+                </p>
+                <iframe class="mb-4" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2630.2793256579357!2d44.49918735092171!3d48.757461879176034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x411aca5cdbd425e7%3A0x7688d7f61822db14!2z0KPQvdC40LLQtdGA0YHQsNC70YzQvdGL0Lkg0YDRi9C90L7QuiAi0J7Qu9C40LzQv9C40Y8iLCDRg9C7LiA4LdC5INCS0L7Qt9C00YPRiNC90L7QuSDQkNGA0LzQuNC4LCA1Mywg0JLQvtC70LPQvtCz0YDQsNC0LCDQktC-0LvQs9C-0LPRgNCw0LTRgdC60LDRjyDQvtCx0LsuLCA0MDAxMTc!5e0!3m2!1sru!2sru!4v1622381505820!5m2!1sru!2sru" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>	        <!-- single-product-section end -->
+            </div>
+        </div><!-- row end -->
+    </div>
+</section>
+<!-- product-section end-->
+
+<script type="text/javascript">
+    function searchFunction()
+    {
+        var input, countProducts, productName, i;
+        input = document.getElementById('searchProduct').value;
+
+        var currentProducts = @countProducts;
+        countProducts = currentProducts;
+
+
+        for (i = 0; i < countProducts; i++)
+        {
+            productName = document.querySelector(".productName" + i).textContent;
+
+            if (productName.toUpperCase().indexOf(input.toUpperCase()) !== -1)
+            {
+                document.getElementById('product' + i).style.display = "";
+            }
+            else
+            {
+                document.getElementById('product' + i).style.display = "none";
+            }
+        }
+    }
+</script>
